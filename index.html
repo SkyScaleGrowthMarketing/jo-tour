@@ -31,6 +31,8 @@
   --carimbo:#A72638;
   --carimbo-ink:#8C1F2E;
   --latao:#B9955B;
+  --latao-ink:#8A6A3F;
+  --selo:#2E6A5E;
   --tinta:#1C1A16;
   --tinta-soft:#514C42;
   --line:rgba(28,26,22,.18);
@@ -47,7 +49,7 @@ img{max-width:100%}
 a{color:inherit}
 .cta{
   display:inline-flex;align-items:center;gap:10px;text-decoration:none;
-  font-family:var(--font-sans);font-weight:600;font-size:16px;letter-spacing:.2px;
+  font-family:var(--font-sans);font-weight:600;font-size:15px;letter-spacing:.5px;
   padding:17px 30px;border-radius:3px;min-height:54px;box-sizing:border-box;
   transition:transform .18s ease, box-shadow .18s ease;
 }
@@ -70,6 +72,7 @@ body{background-image:var(--grain-ink)}
   font-family:var(--font-serif);font-style:italic;font-size:15px;color:var(--carimbo);
   margin:0 0 6px;
 }
+.eyebrow.on-navy{color:var(--latao)}
 h1,h2,h3{font-family:var(--font-serif);margin:0;letter-spacing:-.01em}
 .mono{font-family:var(--font-mono)}
 
@@ -92,7 +95,8 @@ h1,h2,h3{font-family:var(--font-serif);margin:0;letter-spacing:-.01em}
   display:flex;align-items:center;justify-content:center;color:var(--latao);
   font-family:var(--font-serif);font-weight:700;font-size:17px;
 }
-h1.title{color:var(--paper);font-weight:600;font-size:clamp(32px,4vw,48px);line-height:1.18;max-width:14ch}
+h1.title{color:var(--paper);font-weight:600;font-size:clamp(30px,3.6vw,44px);line-height:1.2;max-width:16ch}
+h1.title .title-sub{display:block;font-weight:500;font-size:.64em;line-height:1.3;margin-top:10px}
 .hero-sub{font-size:17px;line-height:1.65;color:#C7D0DC;max-width:46ch;margin:0}
 .hero-list{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
 .hero-list li{
@@ -122,11 +126,25 @@ h1.title{color:var(--paper);font-weight:600;font-size:clamp(32px,4vw,48px);line-
 .section-head{max-width:640px;margin-bottom:40px}
 .section-head h2{font-size:clamp(26px,3vw,36px);line-height:1.2;font-weight:600}
 .section-head p{font-size:16px;line-height:1.6;color:var(--tinta-soft);margin:12px 0 0}
-.tickets{display:flex;flex-direction:column;gap:14px}
-.ticket{
-  display:grid;grid-template-columns:96px 1fr;background:#fff;border:1px solid var(--line);
-  position:relative;
+.tickets{display:flex;flex-direction:column;gap:14px;position:relative}
+.process-line{
+  position:absolute;left:-7px;top:26px;bottom:26px;width:3px;z-index:0;
+  background:linear-gradient(var(--navy),var(--carimbo) 33%,var(--latao-ink) 66%,var(--selo));
+  transform:scaleY(0);transform-origin:top;transition:transform 1.1s cubic-bezier(.3,.7,.2,1);
 }
+.process-line.is-stamped{transform:scaleY(1)}
+.ticket{
+  display:grid;grid-template-columns:96px 1fr;background:#fff;border:1px solid var(--line);border-top:3px solid var(--line);
+  position:relative;z-index:1;
+}
+.ticket:nth-child(2){border-top-color:var(--navy)}
+.ticket:nth-child(2) .ticket-stub{color:var(--navy)}
+.ticket:nth-child(3){border-top-color:var(--carimbo)}
+.ticket:nth-child(3) .ticket-stub{color:var(--carimbo)}
+.ticket:nth-child(4){border-top-color:var(--latao-ink)}
+.ticket:nth-child(4) .ticket-stub{color:var(--latao-ink)}
+.ticket:nth-child(5){border-top-color:var(--selo)}
+.ticket:nth-child(5) .ticket-stub{color:var(--selo)}
 .ticket-stub{
   display:flex;align-items:center;justify-content:center;
   font-family:var(--font-mono);font-weight:600;font-size:28px;color:var(--carimbo);
@@ -168,25 +186,33 @@ h1.title{color:var(--paper);font-weight:600;font-size:clamp(32px,4vw,48px);line-
 .contrast{background:var(--paper-dim)}
 .contrast-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
 .contrast-col{background:var(--paper-dim);padding:clamp(32px,4vw,48px)}
-.contrast-col.approved{background:#fff}
+.contrast-col.approved{background:#fff;border-top:3px solid var(--latao)}
+.compare-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--latao-ink);margin:0 0 4px;text-transform:uppercase}
 .mini-stamp{
   display:inline-flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   width:120px;aspect-ratio:1/.72;border:2px solid currentColor;outline:1px solid currentColor;outline-offset:4px;
   font-family:var(--font-sans);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
-  margin-bottom:20px;position:relative;
+  margin-bottom:20px;position:relative;opacity:0;transform:scale(2.2) rotate(-22deg);
+  transition:transform .5s cubic-bezier(.17,.89,.32,1.25), opacity .35s ease;
 }
+.mini-stamp.is-stamped{opacity:1}
 .mini-stamp::before{
   content:"";position:absolute;inset:0;mix-blend-mode:multiply;opacity:.35;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='110'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
-.contrast-col.denied .mini-stamp{color:#8A8378;transform:rotate(-5deg) scale(1.02);filter:blur(.3px);opacity:.9}
-.contrast-col.approved .mini-stamp{color:var(--carimbo);transform:rotate(-5deg)}
-.contrast-col h3{font-family:var(--font-serif);font-size:19px;font-weight:600;margin-bottom:10px}
-.contrast-col p{font-size:15px;line-height:1.65;color:var(--tinta-soft);margin:0 0 16px}
-.contrast-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:14px}
-.contrast-col.denied .contrast-list li{color:var(--tinta-soft)}
-.contrast-col.denied .contrast-list li::before{content:"– ";color:#A39C8E}
-.contrast-col.approved .contrast-list li::before{content:"■ ";color:var(--carimbo);font-size:10px}
+.contrast-col.denied .mini-stamp{color:#8A8378}
+.contrast-col.denied .mini-stamp.is-stamped{transform:rotate(-5deg) scale(1.02);filter:blur(.3px);opacity:.9}
+.contrast-col.approved .mini-stamp{color:var(--carimbo)}
+.contrast-col.approved .mini-stamp.is-stamped{transform:rotate(-5deg)}
+.contrast-col h3{font-family:var(--font-serif);font-size:19px;font-weight:600;margin-bottom:14px}
+.compare-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.compare-list li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-top:1px solid var(--line);font-size:14.5px}
+.compare-list li:first-child{border-top:none}
+.compare-list i{font-style:italic;font-weight:400;color:var(--tinta-soft);white-space:nowrap;font-size:13.5px}
+.compare-list b{font-weight:600;white-space:nowrap}
+.contrast-col.denied .compare-list b{color:var(--tinta-soft)}
+.contrast-col.approved .compare-list b{color:var(--carimbo)}
+.contrast-note{font-size:13px;color:var(--tinta-soft)}
 
 /* ===== AUTORIDADE + PROVA SOCIAL ===== */
 .authority{background:var(--paper)}
@@ -201,7 +227,17 @@ h1.title{color:var(--paper);font-weight:600;font-size:clamp(32px,4vw,48px);line-
 .stat{padding:26px 10px;text-align:center;border-left:1px solid var(--line)}
 .stat:first-child{border-left:none}
 .stat strong{display:block;font-family:var(--font-serif);font-weight:600;font-size:clamp(30px,3.6vw,42px);color:var(--navy);font-variant-numeric:tabular-nums}
+.stat:nth-child(2) strong{color:var(--carimbo)}
 .stat span{display:block;font-size:13px;color:var(--tinta-soft);margin-top:4px}
+.portrait{position:relative}
+.seal-badge{
+  position:absolute;right:-14px;bottom:-14px;width:62px;height:62px;border-radius:50%;
+  background:var(--carimbo);border:3px solid var(--paper);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.28);
+  opacity:0;transform:scale(0) rotate(-40deg);
+  transition:transform .5s cubic-bezier(.17,.89,.32,1.3), opacity .3s ease;
+}
+.seal-badge.is-stamped{opacity:1;transform:scale(1) rotate(-10deg)}
 
 .boarding-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:64px}
 .boarding{
@@ -240,7 +276,8 @@ footer{background:var(--navy-deep);color:#A9B4C2}
   .passport-cover::after{display:none}
   .visa-page{padding:0 20px 48px}
   .guarantee-inner{grid-template-columns:1fr;text-align:center}
-  .guarantee .hero-list,.guarantee p{margin-inline:auto}
+  .guarantee .hero-list,.guarantee p{margin-inline:auto;max-width:440px}
+  .guarantee .hero-list li{text-align:left}
   .contrast-grid{grid-template-columns:1fr}
   .authority-top{grid-template-columns:1fr}
   .portrait{max-width:220px}
@@ -248,9 +285,10 @@ footer{background:var(--navy-deep);color:#A9B4C2}
   .stat{border-left:none;border-top:1px solid var(--line)}
   .stat:first-child{border-top:none}
   .ticket,.boarding{grid-template-columns:70px 1fr}
+  .compare-list li{flex-direction:column;align-items:flex-start;gap:3px}
 }
 @media (prefers-reduced-motion: reduce){
-  .stamp{transition:none}
+  .stamp,.mini-stamp,.seal-badge,.process-line{transition:none}
   .cta{transition:none}
   .cta:hover{transform:none}
 }
@@ -264,15 +302,16 @@ footer{background:var(--navy-deep);color:#A9B4C2}
   <div class="hero-spread">
     <div class="passport-cover">
       <span class="seal" aria-hidden="true">JT</span>
-      <h1 class="title">Seu visto americano, do diagnóstico à entrevista.</h1>
-      <p class="hero-sub">A Jo Tour acompanha você em cada etapa do processo. E se a primeira solicitação assessorada for negada, a segunda assessoria não tem nova cobrança pelos nossos serviços.*</p>
+      <p class="eyebrow on-navy">Assessoria para visto americano</p>
+      <h1 class="title">Seu visto americano com assessoria completa. <span class="title-sub">E uma segunda assessoria gratuita se ele for negado.</span></h1>
+      <p class="hero-sub">Conte com a Jo Tour durante todo o processo — da orientação para tirar o passaporte ao agendamento do visto. E, caso receba uma negativa, tenha direito a uma segunda assessoria sem nova cobrança pelos nossos serviços.*</p>
       <ul class="hero-list">
         <li>Diagnóstico gratuito do perfil</li>
         <li>Acompanhamento em todas as etapas</li>
-        <li>Segunda assessoria sem custo em caso de negativa*</li>
+        <li>Segunda assessoria gratuita em caso de negativa*</li>
       </ul>
       <div class="hero-actions">
-        <a class="cta cta-paper" href="#DEFINIR-URL-DO-CTA" data-cta>Quero meu diagnóstico gratuito</a>
+        <a class="cta cta-paper" href="#DEFINIR-URL-DO-CTA" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a>
         <span class="hero-note">Entenda os próximos passos para solicitar seu visto americano.</span>
       </div>
     </div>
@@ -298,6 +337,7 @@ footer{background:var(--navy-deep);color:#A9B4C2}
       <p>Conte com orientação especializada em cada etapa da solicitação do seu visto americano.</p>
     </div>
     <div class="tickets">
+      <div class="process-line" id="processLine" aria-hidden="true"></div>
       <div class="ticket"><div class="ticket-stub">01</div><div class="ticket-body"><h3>Diagnóstico do seu perfil</h3><p>Analisamos as informações iniciais e orientamos você sobre os próximos passos para solicitar seu visto.</p></div></div>
       <div class="ticket"><div class="ticket-stub">02</div><div class="ticket-body"><h3>Passaporte e documentação</h3><p>Orientamos sobre a emissão do passaporte, quando necessário, e os documentos relevantes para o processo.</p></div></div>
       <div class="ticket"><div class="ticket-stub">03</div><div class="ticket-body"><h3>Formulários e agendamentos</h3><p>Auxiliamos com as informações exigidas no sistema consular e os agendamentos necessários.</p></div></div>
@@ -313,10 +353,15 @@ footer{background:var(--navy-deep);color:#A9B4C2}
       <div class="stamp" id="stampGuarantee"><strong>Garantia</strong><strong>2ª assessoria</strong><span>Jo Tour</span></div>
     </div>
     <div>
-      <p class="eyebrow">Garantia especial Jo Tour</p>
+      <p class="eyebrow on-navy">Garantia especial Jo Tour</p>
       <h2>Se o seu visto for negado, você não paga uma nova assessoria na segunda tentativa.</h2>
       <p>Contratando a Jo Tour, caso sua primeira solicitação assessorada seja negada, você terá direito a uma segunda assessoria sem custo adicional pelos nossos serviços.*</p>
-      <a class="cta cta-ink" href="#DEFINIR-URL-DO-CTA" data-cta>Quero solicitar meu diagnóstico gratuito</a>
+      <ul class="hero-list">
+        <li>Acompanhamento na primeira solicitação.</li>
+        <li>Nova assessoria caso o visto seja negado.</li>
+        <li>Sem nova cobrança de honorários de assessoria na segunda tentativa.</li>
+      </ul>
+      <a class="cta cta-ink" href="#DEFINIR-URL-DO-CTA" data-cta>QUERO SOLICITAR MEU DIAGNÓSTICO GRATUITO</a>
       <p class="fine-print">*A garantia cobre exclusivamente os serviços de assessoria prestados pela Jo Tour na segunda tentativa, conforme condições contratuais. Taxas consulares, governamentais e demais tarifas externas não estão inclusas. A aprovação do visto depende exclusivamente das autoridades americanas.</p>
     </div>
   </div>
@@ -328,34 +373,43 @@ footer{background:var(--navy-deep);color:#A9B4C2}
     <div class="section-head">
       <p class="eyebrow">Comparativo de valor</p>
       <h2>Mais do que preencher formulários. É ter acompanhamento durante o processo.</h2>
-      <p>Veja a diferença entre seguir sozinho (ou com uma assessoria básica) e contar com a solução completa da Jo Tour.</p>
+      <p>Veja a diferença entre contratar apenas os serviços básicos de uma assessoria e contar com a solução completa da Jo Tour.</p>
     </div>
   </div>
   <div class="contrast-grid">
     <div class="contrast-col denied">
       <div class="wrap" style="padding:0">
-        <div class="mini-stamp">Negado</div>
-        <h3>Por conta própria</h3>
-        <p>Formulários, agendamentos, diagnóstico inicial e o que fazer em caso de negativa ficam por sua conta — e variam de caso a caso.</p>
-        <ul class="contrast-list">
-          <li>Preenchimento de formulários</li>
-          <li>Apoio com agendamentos</li>
-          <li>Diagnóstico inicial gratuito</li>
+        <div class="mini-stamp" id="stampDenied">Negado</div>
+        <h3>Assessoria básica</h3>
+        <ul class="compare-list">
+          <li><span>Preenchimento de formulários</span><b>Incluso</b></li>
+          <li><span>Apoio com agendamentos</span><b>Incluso</b></li>
+          <li><span>Diagnóstico inicial gratuito</span><i>Depende do serviço</i></li>
+          <li><span>Orientação para emissão do passaporte</span><i>Depende do pacote</i></li>
+          <li><span>Suporte durante todas as etapas</span><i>Depende do pacote</i></li>
+          <li><span>Segunda assessoria sem custo em caso de negativa*</span><i>Depende do contrato</i></li>
         </ul>
       </div>
     </div>
     <div class="contrast-col approved">
       <div class="wrap" style="padding:0">
-        <div class="mini-stamp">Aprovado</div>
-        <h3>Com a Jo Tour</h3>
-        <p>Formulários, agendamentos e diagnóstico inicial já estão incluídos — e se a resposta for negativa, a segunda assessoria entra sem custo adicional.*</p>
-        <ul class="contrast-list">
-          <li>Preenchimento de formulários</li>
-          <li>Apoio com agendamentos</li>
-          <li>Diagnóstico inicial gratuito</li>
+        <div class="mini-stamp" id="stampApproved">Aprovado</div>
+        <p class="compare-tag">Jo Tour</p>
+        <h3>Assessoria completa</h3>
+        <ul class="compare-list">
+          <li><span>Preenchimento de formulários</span><b>Incluso</b></li>
+          <li><span>Apoio com agendamentos</span><b>Incluso</b></li>
+          <li><span>Diagnóstico inicial gratuito</span><b>Incluso</b></li>
+          <li><span>Orientação para emissão do passaporte</span><b>Incluso</b></li>
+          <li><span>Suporte durante todas as etapas</span><b>Incluso</b></li>
+          <li><span>Segunda assessoria sem custo em caso de negativa*</span><b>Incluso</b></li>
         </ul>
       </div>
     </div>
+  </div>
+  <div class="wrap" style="padding-top:36px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+    <a class="cta cta-ink" href="#DEFINIR-URL-DO-CTA" data-cta>QUERO CONHECER A ASSESSORIA JO TOUR</a>
+    <span class="contrast-note">*Condições da segunda assessoria detalhadas logo abaixo.</span>
   </div>
 </section>
 
@@ -363,7 +417,10 @@ footer{background:var(--navy-deep);color:#A9B4C2}
 <section class="authority section-pad">
   <div class="wrap">
     <div class="authority-top">
-      <div class="portrait"><img src="images/jo-responsavel.jpg" alt="Jo, responsável pela Jo Tour, sorrindo com um notebook no colo"></div>
+      <div class="portrait">
+        <img src="images/jo-responsavel.jpg" alt="Jo, responsável pela Jo Tour, sorrindo com um notebook no colo">
+        <div class="seal-badge" id="sealBadge" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></div>
+      </div>
       <div>
         <p class="eyebrow">Quem cuida do seu processo</p>
         <h2>Conte com a Jo Tour para dar o próximo passo rumo ao seu visto americano.</h2>
@@ -378,6 +435,7 @@ footer{background:var(--navy-deep);color:#A9B4C2}
       <div class="stat"><strong>9 em 10</strong><span>clientes indicam a Jo Tour</span></div>
     </div>
 
+    <p class="eyebrow">O que dizem os clientes</p>
     <div class="boarding-row">
       <div class="boarding">
         <div class="boarding-stub"><span class="initials">LM</span></div>
@@ -398,7 +456,7 @@ footer{background:var(--navy-deep);color:#A9B4C2}
 
   <div class="final-cta engraved">
     <h3>Comece pelo diagnóstico gratuito do seu perfil.</h3>
-    <a class="cta cta-paper" href="#DEFINIR-URL-DO-CTA" data-cta>Quero meu diagnóstico gratuito</a>
+    <a class="cta cta-paper" href="#DEFINIR-URL-DO-CTA" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a>
     <span class="hero-note">Fale com a Jo Tour e descubra como começar seu processo.</span>
   </div>
 </section>
@@ -454,19 +512,36 @@ var JOTOUR_CONFIG = {
 
 (function () {
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var stamp = document.getElementById("stampGuarantee");
-  var stampTarget = document.querySelector(".stamp-wrap");
-  if (!stamp || !stampTarget) return;
-  if (reduceMotion) { stamp.classList.add("is-stamped"); return; }
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        stamp.classList.add("is-stamped");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: .4 });
-  observer.observe(stampTarget);
+
+  function reveal(targetEl, stampEls, threshold) {
+    if (!targetEl || !stampEls.length) return;
+    if (reduceMotion) {
+      stampEls.forEach(function (el) { el.classList.add("is-stamped"); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          stampEls.forEach(function (el) { el.classList.add("is-stamped"); });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: threshold });
+    observer.observe(targetEl);
+  }
+
+  var guaranteeStamp = document.getElementById("stampGuarantee");
+  reveal(document.querySelector(".stamp-wrap"), guaranteeStamp ? [guaranteeStamp] : [], .4);
+
+  var processLine = document.getElementById("processLine");
+  reveal(document.querySelector(".tickets"), processLine ? [processLine] : [], .2);
+
+  var stampDenied = document.getElementById("stampDenied");
+  var stampApproved = document.getElementById("stampApproved");
+  reveal(document.querySelector(".contrast-grid"), [stampDenied, stampApproved].filter(Boolean), .3);
+
+  var sealBadge = document.getElementById("sealBadge");
+  reveal(document.querySelector(".portrait"), sealBadge ? [sealBadge] : [], .5);
 })();
 
 (function () {
