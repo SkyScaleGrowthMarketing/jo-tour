@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obrigado — Jo Tour</title>
+<meta name="description" content="Recebemos sua solicitação de diagnóstico gratuito. A Jo Tour vai entrar em contato em breve.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<!-- META PIXEL: cole aqui o evento de conversão (Lead/CompleteRegistration) desta página -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --navy:#0E1F33;
+  --navy-deep:#091625;
+  --paper:#F2EDE1;
+  --paper-dim:#E9E2D2;
+  --carimbo:#A72638;
+  --carimbo-ink:#8C1F2E;
+  --latao:#B9955B;
+  --latao-ink:#8A6A3F;
+  --selo:#2E6A5E;
+  --tinta:#1C1A16;
+  --tinta-soft:#514C42;
+  --line:rgba(28,26,22,.18);
+  --line-on-navy:rgba(242,237,225,.22);
+  --font-serif:'IBM Plex Serif', Georgia, serif;
+  --font-sans:'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono:'IBM Plex Mono', monospace;
+  --guilloche: repeating-linear-gradient(45deg, rgba(242,237,225,.055) 0 1px, transparent 1px 8px),
+               repeating-linear-gradient(-45deg, rgba(242,237,225,.055) 0 1px, transparent 1px 8px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--navy);background-image:var(--guilloche);color:var(--paper);font-family:var(--font-sans);min-height:100vh}
+a{color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:clamp(28px,6vw,48px) 20px}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.card{width:100%;text-align:center}
+
+.seal{
+  width:46px;height:46px;border-radius:50%;border:1.5px solid var(--latao);
+  display:flex;align-items:center;justify-content:center;color:var(--latao);
+  font-family:var(--font-serif);font-weight:700;font-size:17px;margin:0 auto 28px;
+}
+
+.stamp{
+  width:230px;aspect-ratio:1/.78;border:3px solid var(--selo);outline:1px solid var(--selo);outline-offset:7px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  color:var(--selo);background:transparent;position:relative;margin:0 auto 40px;
+  transform:scale(2.6) rotate(-10deg);opacity:0;
+  animation:stampIn .6s cubic-bezier(.17,.89,.32,1.28) .15s forwards, stampFade .4s ease .15s forwards;
+}
+@keyframes stampIn{to{transform:scale(1) rotate(-7deg)}}
+@keyframes stampFade{to{opacity:1}}
+.stamp::before{
+  content:"";position:absolute;inset:0;mix-blend-mode:multiply;opacity:.4;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='110'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+.stamp strong{font-family:var(--font-sans);font-weight:700;font-size:17px;letter-spacing:.08em;text-transform:uppercase}
+.stamp span{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+
+.eyebrow{font-family:var(--font-serif);font-style:italic;font-size:15px;color:var(--latao);margin:0 0 10px}
+h1{font-family:var(--font-serif);margin:0;letter-spacing:-.01em;font-weight:600;font-size:clamp(26px,4vw,36px);line-height:1.25}
+.lead{font-size:16px;line-height:1.65;color:#C7D0DC;max-width:46ch;margin:18px auto 0}
+
+.next{
+  list-style:none;margin:32px auto 0;padding:0;max-width:440px;text-align:left;
+  display:flex;flex-direction:column;gap:12px;
+}
+.next li{
+  display:flex;gap:12px;align-items:baseline;font-size:15px;color:#D9E0E9;
+  border-left:2px solid var(--carimbo);padding-left:12px;
+}
+.next b{font-family:var(--font-mono);font-size:12px;color:var(--latao);letter-spacing:.08em}
+
+.cta{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  font-family:var(--font-sans);font-weight:600;font-size:15px;letter-spacing:.5px;
+  padding:17px 30px;border-radius:3px;min-height:54px;box-sizing:border-box;
+  transition:transform .18s ease, box-shadow .18s ease;margin-top:34px;
+}
+.cta:hover{transform:translateY(-2px)}
+.cta:focus-visible{outline:3px solid var(--latao);outline-offset:3px}
+.cta-paper{background:var(--paper);color:var(--navy);box-shadow:0 10px 24px rgba(0,0,0,.28)}
+.cta-paper:hover{background:#fff}
+.hero-note{font-size:13px;color:#9AA7B6;display:block;margin-top:14px}
+
+.back{display:inline-block;margin-top:28px;font-size:13.5px;color:#9AA7B6;text-decoration:none;border-bottom:1px solid rgba(154,167,182,.4)}
+.back:hover{color:var(--paper);border-color:var(--paper)}
+
+@media (prefers-reduced-motion: reduce){
+  .stamp{animation:none;transform:scale(1) rotate(-7deg);opacity:1}
+  .cta{transition:none}
+  .cta:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="wrap">
+    <div class="card">
+      <span class="seal" aria-hidden="true">JT</span>
+      <div class="stamp"><strong>Recebido</strong><strong>Diagnóstico</strong><span>Jo Tour</span></div>
+      <p class="eyebrow">Solicitação confirmada</p>
+      <h1>Obrigado! Recebemos sua solicitação de diagnóstico gratuito.</h1>
+      <p class="lead">A Jo Tour vai analisar as informações enviadas e entrar em contato com você para dar continuidade ao seu processo de visto americano.</p>
+
+      <ul class="next">
+        <li><b>01</b> Análise do seu perfil pela equipe da Jo Tour</li>
+        <li><b>02</b> Contato para explicar os próximos passos</li>
+        <li><b>03</b> Início do acompanhamento da sua solicitação</li>
+      </ul>
+
+      <a class="cta cta-paper" href="https://wa.me/55DDDNUMERO?text=Ol%C3%A1!%20Acabei%20de%20solicitar%20meu%20diagn%C3%B3stico%20gratuito." data-whatsapp>FALAR COM A JO TOUR AGORA</a>
+      <span class="hero-note">Prefere adiantar? Chame no WhatsApp enquanto aguarda o retorno.</span>
+
+      <div>
+        <a class="back" href="index.html">&larr; Voltar para o site</a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
