@@ -12,8 +12,26 @@ Cole o código base do Pixel no lugar do comentário `<!-- META PIXEL ... -->` d
 - [x] Link de destino dos botões de CTA — resolvido: abre o formulário embutido do GoHighLevel
 - [ ] Código base do Meta Pixel
 - [ ] Texto de apresentação da responsável pela Jo Tour (bloco "Quem cuida do seu processo")
-- [ ] Domínio próprio (opcional — site está no link do GitHub Pages por enquanto)
+- [ ] Domínio próprio `jotour.com.br` — `CNAME` já configurado no repositório; falta criar os registros DNS no Registro.br (ver seção "Domínio" abaixo) para o link pendurar
 - [ ] Confirmar no GoHighLevel se a confirmação do formulário deve redirecionar para `obrigado.html` do site ou usar a tela de confirmação própria do GHL
+
+## Domínio (jotour.com.br, via Registro.br)
+O arquivo `CNAME` na raiz do repositório já diz ao GitHub Pages para servir o site em `jotour.com.br`. Falta criar, no DNS do Registro.br (painel → domínio → DNS), os seguintes registros:
+
+**Para o domínio raiz (`jotour.com.br`) — 4 registros A:**
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+**Para `www.jotour.com.br` — 1 registro CNAME:**
+```
+skyscalegrowthmarketing.github.io.
+```
+
+Depois de criar os registros, a propagação leva de alguns minutos a algumas horas. Quando propagar, confirmar em Settings → Pages do repositório que o domínio foi verificado e marcar "Enforce HTTPS".
 
 ## Como publicar atualizações
 Depois de qualquer alteração, `git add` + `git commit` + `git push` no mesmo repositório. O GitHub Pages atualiza o site no mesmo link em cerca de 1 minuto.
