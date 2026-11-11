@@ -262,6 +262,24 @@ h1.title .title-sub{display:block;font-weight:500;font-size:.64em;line-height:1.
 .final-cta .cta{margin-top:22px}
 .final-cta .hero-note{margin-top:12px;display:block}
 
+/* ===== MODAL — formulário de diagnóstico ===== */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.form-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.form-modal.is-open{display:flex}
+.form-modal-backdrop{position:absolute;inset:0;background:rgba(9,22,37,.72)}
+.form-modal-card{
+  position:relative;width:100%;max-width:480px;max-height:90vh;overflow:auto;
+  background:var(--paper);border:1px solid var(--line);box-shadow:0 30px 70px rgba(9,22,37,.45);
+}
+.form-modal-close{
+  position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line);background:#fff;color:var(--tinta);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;line-height:1;z-index:2;
+}
+.form-modal-close:hover{background:var(--paper-dim)}
+.form-modal-card iframe{display:block;width:100%;border:none}
+body.modal-open{overflow:hidden}
+
 footer{background:var(--navy-deep);color:#A9B4C2}
 .foot-wrap{max-width:1160px;margin:0 auto;padding:40px 20px 32px;display:flex;flex-direction:column;gap:22px}
 .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center}
@@ -311,7 +329,7 @@ footer{background:var(--navy-deep);color:#A9B4C2}
         <li>Segunda assessoria gratuita em caso de negativa*</li>
       </ul>
       <div class="hero-actions">
-        <a class="cta cta-paper" href="#DEFINIR-URL-DO-CTA" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a>
+        <a class="cta cta-paper" href="#" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a>
         <span class="hero-note">Entenda os próximos passos para solicitar seu visto americano.</span>
       </div>
     </div>
@@ -361,7 +379,7 @@ footer{background:var(--navy-deep);color:#A9B4C2}
         <li>Nova assessoria caso o visto seja negado.</li>
         <li>Sem nova cobrança de honorários de assessoria na segunda tentativa.</li>
       </ul>
-      <a class="cta cta-ink" href="#DEFINIR-URL-DO-CTA" data-cta>QUERO SOLICITAR MEU DIAGNÓSTICO GRATUITO</a>
+      <a class="cta cta-ink" href="#" data-cta>QUERO SOLICITAR MEU DIAGNÓSTICO GRATUITO</a>
       <p class="fine-print">*A garantia cobre exclusivamente os serviços de assessoria prestados pela Jo Tour na segunda tentativa, conforme condições contratuais. Taxas consulares, governamentais e demais tarifas externas não estão inclusas. A aprovação do visto depende exclusivamente das autoridades americanas.</p>
     </div>
   </div>
@@ -408,7 +426,7 @@ footer{background:var(--navy-deep);color:#A9B4C2}
     </div>
   </div>
   <div class="wrap" style="padding-top:36px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
-    <a class="cta cta-ink" href="#DEFINIR-URL-DO-CTA" data-cta>QUERO CONHECER A ASSESSORIA JO TOUR</a>
+    <a class="cta cta-ink" href="#" data-cta>QUERO CONHECER A ASSESSORIA JO TOUR</a>
     <span class="contrast-note">*Condições da segunda assessoria detalhadas logo abaixo.</span>
   </div>
 </section>
@@ -456,7 +474,7 @@ footer{background:var(--navy-deep);color:#A9B4C2}
 
   <div class="final-cta engraved">
     <h3>Comece pelo diagnóstico gratuito do seu perfil.</h3>
-    <a class="cta cta-paper" href="#DEFINIR-URL-DO-CTA" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a>
+    <a class="cta cta-paper" href="#" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a>
     <span class="hero-note">Fale com a Jo Tour e descubra como começar seu processo.</span>
   </div>
 </section>
@@ -477,36 +495,53 @@ footer{background:var(--navy-deep);color:#A9B4C2}
   </div>
 </footer>
 
+<!-- MODAL — formulário "FAP 01 Visto" (GoHighLevel) -->
+<div class="form-modal" id="formModal" role="dialog" aria-modal="true" aria-labelledby="formModalTitle">
+  <div class="form-modal-backdrop" data-modal-close></div>
+  <div class="form-modal-card">
+    <button type="button" class="form-modal-close" data-modal-close aria-label="Fechar formulário">&times;</button>
+    <h2 id="formModalTitle" class="sr-only">Diagnóstico gratuito — Jo Tour</h2>
+    <iframe
+      src="https://api.leadconnectorhq.com/widget/form/dxhdsjKbdt86gNwEoAOO"
+      style="height:723px"
+      id="popup-dxhdsjKbdt86gNwEoAOO"
+      data-form-name="FAP 01 Visto"
+      data-height="723"
+      data-layout-iframe-id="popup-dxhdsjKbdt86gNwEoAOO"
+      data-form-id="dxhdsjKbdt86gNwEoAOO"
+      title="FAP 01 Visto — Jo Tour"
+    ></iframe>
+  </div>
+</div>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+
 <script>
-var JOTOUR_CONFIG = {
-  CTA_URL: "",
-  PIXEL_EVENT: "Contact",
-  KEEP_UTMS: true
-};
 (function () {
-  var base = (JOTOUR_CONFIG.CTA_URL || "").trim();
-  var href = "#DEFINIR-URL-DO-CTA";
-  if (base) {
-    href = base;
-    if (JOTOUR_CONFIG.KEEP_UTMS && window.location.search) {
-      try {
-        var url = new URL(base, window.location.href);
-        new URLSearchParams(window.location.search).forEach(function (v, k) {
-          if (/^(utm_|fbclid$|gclid$)/.test(k) && !url.searchParams.has(k)) url.searchParams.set(k, v);
-        });
-        href = url.toString();
-      } catch (e) {}
-    }
+  var modal = document.getElementById("formModal");
+  if (!modal) return;
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    modal.classList.add("is-open");
+    document.body.classList.add("modal-open");
+    try {
+      if (typeof window.fbq === "function")
+        window.fbq("track", "Lead", { content_name: "Diagnostico gratuito - Jo Tour" });
+    } catch (err) {}
   }
+  function closeModal() {
+    modal.classList.remove("is-open");
+    document.body.classList.remove("modal-open");
+  }
+
   document.querySelectorAll("[data-cta]").forEach(function (a) {
-    a.setAttribute("href", href);
-    a.addEventListener("click", function (e) {
-      if (!base) { e.preventDefault(); return; }
-      try {
-        if (JOTOUR_CONFIG.PIXEL_EVENT && typeof window.fbq === "function")
-          window.fbq("track", JOTOUR_CONFIG.PIXEL_EVENT, { content_name: "Diagnostico gratuito - Jo Tour" });
-      } catch (err) {}
-    });
+    a.addEventListener("click", openModal);
+  });
+  modal.querySelectorAll("[data-modal-close]").forEach(function (el) {
+    el.addEventListener("click", closeModal);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
   });
 })();
 

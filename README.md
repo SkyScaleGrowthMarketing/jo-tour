@@ -2,19 +2,18 @@
 
 Página única: `index.html` + pasta `images/`.
 
-## Como trocar o link dos botões
-Abra `index.html`, procure por `CTA_URL` (perto do final do arquivo) e cole o link entre as aspas:
-`CTA_URL: "https://seu-link-aqui",`
-Todos os 5 botões passam a usar esse link.
+## Botões de CTA
+Os 4 botões da página ("QUERO MEU DIAGNÓSTICO GRATUITO" etc.) abrem um modal com o formulário "FAP 01 Visto" do GoHighLevel (embed `dxhdsjKbdt86gNwEoAOO`), em vez de linkar para uma URL externa. O modal e a lógica de abrir/fechar estão no final do `index.html`, perto do `</footer>`. Para trocar o formulário, troque o `src` do `<iframe>` dentro de `#formModal`.
 
 ## Meta Pixel
-Cole o código base do Pixel no lugar do comentário `<!-- META PIXEL ... -->` dentro do `<head>`.
+Cole o código base do Pixel no lugar do comentário `<!-- META PIXEL ... -->` dentro do `<head>`. O clique nos botões já dispara `fbq('track', 'Lead', ...)` quando o Pixel estiver instalado — falta só colar o código base.
 
 ## Pendências (dependem do cliente)
-- [ ] Link de destino dos 5 botões de CTA (`CTA_URL` em branco)
-- [ ] Código do Meta Pixel
+- [x] Link de destino dos botões de CTA — resolvido: abre o formulário embutido do GoHighLevel
+- [ ] Código base do Meta Pixel
 - [ ] Texto de apresentação da responsável pela Jo Tour (bloco "Quem cuida do seu processo")
 - [ ] Domínio próprio (opcional — site está no link do GitHub Pages por enquanto)
+- [ ] Confirmar no GoHighLevel se a confirmação do formulário deve redirecionar para `obrigado.html` do site ou usar a tela de confirmação própria do GHL
 
 ## Como publicar atualizações
 Depois de qualquer alteração, `git add` + `git commit` + `git push` no mesmo repositório. O GitHub Pages atualiza o site no mesmo link em cerca de 1 minuto.
