@@ -163,6 +163,35 @@ h1.title .title-sub{display:block;font-weight:500;font-size:.64em;line-height:1.
 .ticket-body h3{font-size:18px;font-weight:600;margin-bottom:6px}
 .ticket-body p{margin:0;font-size:14.5px;line-height:1.6;color:var(--tinta-soft)}
 
+/* ===== VALORES ===== */
+.pricing{background:var(--paper-dim)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price-card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy);padding:26px 24px;display:flex;flex-direction:column;gap:8px}
+.price-card.featured{border-top-color:var(--carimbo);box-shadow:0 18px 40px rgba(9,22,37,.14)}
+.price-card h3{font-size:18px;font-weight:600}
+.price-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--carimbo);margin:0}
+.price-card p{margin:0;font-size:14.5px;line-height:1.55;color:var(--tinta-soft)}
+.price-card .price{font-family:var(--font-serif);font-weight:600;font-size:clamp(32px,4vw,40px);line-height:1.1;color:var(--navy);margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.price-card.featured .price{color:var(--carimbo)}
+.price-note{font-size:13px;line-height:1.6;color:var(--tinta-soft);margin:22px 0 0;max-width:70ch}
+.pricing-cta{display:flex;justify-content:center;margin-top:30px}
+.hero-price{margin:0;font-size:15px;color:var(--paper)}
+.hero-price strong{color:var(--latao);font-family:var(--font-serif);font-size:20px}
+
+/* ===== BOTÃO FIXO NO CELULAR ===== */
+.sticky-cta{display:none}
+@media (max-width:860px){
+  .price-grid{grid-template-columns:1fr}
+  .pricing-cta .cta{width:100%;justify-content:center;text-align:center}
+  .sticky-cta{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:900;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    background:var(--navy-deep);box-shadow:0 -8px 24px rgba(0,0,0,.25);
+  }
+  .sticky-cta .cta{width:100%;justify-content:center;min-height:50px;padding:14px 18px}
+  body{padding-bottom:76px}
+  body.modal-open .sticky-cta{display:none}
+}
+
 /* ===== GARANTIA — carimbo ===== */
 .guarantee{color:var(--paper);overflow:clip}
 .guarantee-inner{display:grid;grid-template-columns:260px 1fr;gap:clamp(32px,6vw,72px);align-items:center}
@@ -332,6 +361,7 @@ footer{background:var(--navy-deep);color:#A9B4C2}
         <li>Acompanhamento em todas as etapas</li>
         <li>Segunda assessoria gratuita em caso de negativa*</li>
       </ul>
+      <p class="hero-price">Assessoria a partir de <strong>R$ 450</strong> · <a href="#valores">ver valores</a></p>
       <p class="visa-types"><strong>Vistos atendidos:</strong> B1 (negócios) e B2 (turismo). Não realizamos assessoria de imigração.</p>
       <div class="hero-actions">
         <a class="cta cta-paper" href="#" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a>
@@ -367,6 +397,37 @@ footer{background:var(--navy-deep);color:#A9B4C2}
       <div class="ticket"><div class="ticket-stub">03</div><div class="ticket-body"><h3>Formulários e agendamentos</h3><p>Auxiliamos com as informações exigidas no sistema consular e os agendamentos necessários.</p></div></div>
       <div class="ticket"><div class="ticket-stub">04</div><div class="ticket-body"><h3>Acompanhamento até as etapas finais</h3><p>Você conta com suporte para esclarecer dúvidas e se preparar para os procedimentos previstos na solicitação.</p></div></div>
     </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="pricing section-pad" id="valores">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Investimento</p>
+      <h2>Quanto custa a assessoria da Jo Tour</h2>
+      <p>Valores claros desde o início. O diagnóstico do seu perfil é gratuito e você escolhe o serviço depois.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>Passaporte</h3>
+        <p class="price">R$ 450</p>
+        <p>Orientação e acompanhamento para emitir o seu passaporte.</p>
+      </div>
+      <div class="price-card">
+        <h3>Visto americano</h3>
+        <p class="price">R$ 950</p>
+        <p>Assessoria completa do visto B1 ou B2: formulários, agendamentos e preparação.</p>
+      </div>
+      <div class="price-card featured">
+        <p class="price-tag">Pacote promocional</p>
+        <h3>Passaporte + visto</h3>
+        <p class="price">R$ 1.400</p>
+        <p>As duas assessorias juntas, em até 3x no cartão.</p>
+      </div>
+    </div>
+    <p class="price-note">Valores referentes aos honorários de assessoria da Jo Tour. Taxas consulares, da Polícia Federal e demais tarifas externas são pagas à parte.</p>
+    <div class="pricing-cta"><a class="cta cta-ink" href="#" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a></div>
   </div>
 </section>
 
@@ -485,6 +546,8 @@ footer{background:var(--navy-deep);color:#A9B4C2}
 </section>
 
 </main>
+
+<div class="sticky-cta"><a class="cta cta-ink" href="#" data-cta>QUERO MEU DIAGNÓSTICO GRATUITO</a></div>
 
 <footer>
   <div class="foot-wrap">

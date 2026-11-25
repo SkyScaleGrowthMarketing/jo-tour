@@ -9,7 +9,7 @@
 
 ## Pendências (dependem do cliente)
 - Link de destino dos botões de CTA (WhatsApp, formulário ou outro).
-- Código do Meta Pixel (Gerenciador de Eventos do Meta).
+- ~~Código do Meta Pixel~~: NÃO vai no site. O Pixel está integrado no formulário GHL "FAP 01 Visto" e dispara o evento quando o lead envia (confirmado pelo Matheus em 2026-11-24). O `fbq` do index.html não tem efeito e não precisa de código base.
 - Texto curto de apresentação da responsável pela Jo Tour (quem é, desde quando atua, como trabalha — só dados comprovados).
 - Domínio próprio (se existir).
 
